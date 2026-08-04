@@ -1,5 +1,5 @@
 import express from 'express'
-import {getuserID} from '../controllers/meController'
+import {getuserID} from '../controllers/meController.js'
 
 const meRouter = express.Router()
 

@@ -1,6 +1,6 @@
 import express from 'express'
-import {addToCart,getCartCount,getAll,deleteAll,deleteItem} from '../controllers/cartController'
-import { requireAuth } from '../middleware/requireAuth'
+import {addToCart,getCartCount,getAll,deleteAll,deleteItem} from '../controllers/cartController.js'
+import { requireAuth } from '../middleware/requireAuth.js'
 
 export const cartRouter = express.Router()
 

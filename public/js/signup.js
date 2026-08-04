@@ -2,15 +2,14 @@ const signupForm = document.getElementById('signup-form')
 const errorMessage = document.getElementById('error-message') 
 
 signupForm.addEventListener('submit', async (e) => {
-  e.preventDefault() // Prevent form from reloading
-
+  e.preventDefault() 
   const name = document.getElementById('signup-name').value.trim()
   const email = document.getElementById('signup-email').value.trim()
   const username = document.getElementById('signup-username').value.trim()
   const password = document.getElementById('signup-password').value.trim()
   const submitBtn = signupForm.querySelector('button')
 
-  errorMessage.textContent = '' // Clear old errors
+  errorMessage.textContent = '' 
   submitBtn.disabled = true
 
   try {

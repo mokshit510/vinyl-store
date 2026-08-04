@@ -2,13 +2,12 @@ const signinForm = document.getElementById('signin-form')
 const errorMessage = document.getElementById('error-message')
 
 signinForm.addEventListener('submit', async (e) => {
-  e.preventDefault() // Prevent form from reloading the page
-
+  e.preventDefault() 
   const username = document.getElementById('signin-username').value.trim()
   const password = document.getElementById('signin-password').value.trim()
   const submitBtn = signinForm.querySelector('button')
 
-  errorMessage.textContent = '' // Clear old error messages
+  errorMessage.textContent = '' 
   submitBtn.disabled = true
 
   try {

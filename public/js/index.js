@@ -6,8 +6,6 @@ import { updateCartIcon } from './cartService.js'
 
 document.getElementById('logout-btn').addEventListener('click', logout)
 
-// ===== Initial Load =====
-
 async function init() {
   populateGenreSelect()
   const products = await getProducts()
@@ -22,15 +20,10 @@ async function init() {
 
 init()
 
-
-// ===== Event Listeners =====
-
 document.getElementById('search-input').addEventListener('input', (e) => {
   e.preventDefault()
   applySearchFilter()
 })
-
-// prevent 'enter' from submitting
 document.getElementById('search-input').addEventListener('submit', (e) => {
   e.preventDefault()
 })

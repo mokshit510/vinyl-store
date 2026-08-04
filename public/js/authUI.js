@@ -1,4 +1,4 @@
-// ===== Check if user is signed in =====
+
 export async function checkAuth() {
   try {
     const res = await fetch('/api/auth/me')
@@ -20,14 +20,10 @@ export async function checkAuth() {
   }
 }
 
-// ===== Greet user or guest =====
-
 export function renderGreeting(name) {
   const user = name ? name : 'Guest'
   document.getElementById('greeting').textContent = `Welcome, ${user}!`
 }
-
-// ===== Only display logout button if logged in, else display log in/sign in options =====
 
 export function showHideMenuItems(name) {
   const isLoggedIn = name

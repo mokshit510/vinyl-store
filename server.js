@@ -10,7 +10,7 @@ const PORT = 8000
 app.use(express.json()) 
 
 app.use(session({
-  secret: secret,
+  secret: 'secret',
   resave: false, 
   saveUninitialized: false,
   cookie: {

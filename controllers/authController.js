@@ -1,9 +1,9 @@
 import { getDBConnection } from "../db/db.js";
 import bcrypt from 'bcrypt'
-import validator from 'validatorjs'
+import validator from 'validator'
 
 export async function signin(req, res){
-    const{name,email,username,password} = req.body
+    let{name,email,username,password} = req.body
 
     if(!name || !email || !username || !password){
         res.status(400).json({error:'all fields should be present'})
@@ -14,7 +14,7 @@ export async function signin(req, res){
     if(!/^[a-zA-Z0-9_-]{1,20}$/.test(username)){
         res.status(400).json({error:'invalid username'})
     }
-    if(!validator.email(email)){
+    if(!validator.isEmail(email)){
         res.status(400).json({error:'email format is not valid'})
     }
     try{
@@ -29,19 +29,19 @@ export async function signin(req, res){
         res.status(201).json({message:'signin successfull'})
     }
     catch(err){
-        res.status(500).json({error:'something went wrong:err'})
+        res.status(500).json({error:`something went wrong:${err}`})
     }
 }
 export async function login(req, res){
-    const{username,password} = req.body
+    let{username,password} = req.body
     if(!username || !password){
         res.status(400).json({error:'all fields should be present'})
     }
     username=username.trim()
     try{
         const db = await getDBConnection()
-        const pass = bcrypt.hash(password,10)
-        const exist = db.get(`select * from users where username = ? and password = ?`,[username,pass])
+        const pass = await bcrypt.hash(password,10)
+        const exist = await db.get(`select * from users where username = ? and password = ?`,[username,pass])
         if(exist){
             req.session.userId = exist.id
             res.status(201).json({message:'login successfull'})
@@ -50,7 +50,7 @@ export async function login(req, res){
         }
     }
     catch(err){
-        res.status(500).json({error:'something went wrong:err'})
+        res.status(500).json({error:`something went wrong:${err}`})
     }
 }
 export async function logout(req, res){

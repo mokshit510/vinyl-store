@@ -1,6 +1,5 @@
 import { addBtnListeners } from './cartService.js'
 
-// ===== Rendering products =====
 
 export function renderProducts(products) {
   const albumsContainer = document.getElementById('products-container')
@@ -20,8 +19,6 @@ export function renderProducts(products) {
   albumsContainer.innerHTML = cards
   addBtnListeners()
 }
-
-// ===== Handling filtering =====
 
 export async function applySearchFilter() {
   const search = document.getElementById('search-input').value.trim()
